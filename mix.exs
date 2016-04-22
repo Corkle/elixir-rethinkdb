@@ -19,7 +19,8 @@ defmodule RethinkExample.Mixfile do
   def application do
     [mod: {RethinkExample, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex,
+                    :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +38,9 @@ defmodule RethinkExample.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:rethinkdb_ecto, github: "hamiltop/rethinkdb_ecto"}]
+     {:rethinkdb_ecto, github: "hamiltop/rethinkdb_ecto"},
+     {:comeonin, "~> 2.4"},
+     {:guardian, "~> 0.10.0"},]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

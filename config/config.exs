@@ -27,3 +27,10 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+config :guardian, Guardian,
+  issuer: "RethinkExample",
+  ttl: {3, :days},
+  verify_issuer: true,
+  secret_key: "tb3VSRRiqPCbBgEQWQ6jD5uudZqdRl5d4jOYwBqGd3FFEI27V9hp7+QBJIXF4y4i",
+  serializer: RethinkExample.GuardianSerializier

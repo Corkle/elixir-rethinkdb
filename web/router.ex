@@ -17,11 +17,16 @@ defmodule RethinkExample.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/users", UserController
     resources "/posts", PostController
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", RethinkExample do
-  #   pipe_through :api
-  # end
+  scope "/api", RethinkExample do
+    pipe_through :api
+    
+    scope "/v1" do
+      post "/registrations", RegistrationController, :create
+    end
+  end
 end
