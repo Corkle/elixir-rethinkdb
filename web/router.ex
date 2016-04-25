@@ -19,6 +19,9 @@ defmodule RethinkExample.Router do
     get "/", PageController, :index
     resources "/users", UserController
     resources "/posts", PostController
+    
+    get "/registration", RegistrationController, :new
+    post "/registration", RegistrationController, :create
   end
 
   # Other scopes may use custom stacks.

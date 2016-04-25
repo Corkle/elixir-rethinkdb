@@ -9,6 +9,7 @@ defmodule RethinkExample.User do
     field :email, :string
     field :encrypted_password, :string
     field :password, :string, virtual: true
+    field :password_confirmation, :string, virtual: true
 
     timestamps
   end
@@ -26,7 +27,7 @@ defmodule RethinkExample.User do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_format(:email, ~r/@/)
-    |> validate_length(:password, min: 5)
+    #|> validate_length(:password, min: 5)
     |> validate_confirmation(:password, message: "Password does not match")
     |> generate_encrypted_password
     |> unique_constraint(:email, message: "Email already in use")

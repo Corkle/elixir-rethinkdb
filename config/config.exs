@@ -33,4 +33,4 @@ config :guardian, Guardian,
   ttl: {3, :days},
   verify_issuer: true,
   secret_key: "tb3VSRRiqPCbBgEQWQ6jD5uudZqdRl5d4jOYwBqGd3FFEI27V9hp7+QBJIXF4y4i",
-  serializer: RethinkExample.GuardianSerializier
+  serializer: RethinkExample.GuardianSerializer

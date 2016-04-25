@@ -59,7 +59,7 @@ defmodule RethinkExample.UserController do
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    DB.delete!(user)
+    DB.delete(user)
 
     conn
     |> put_flash(:info, "User deleted successfully.")

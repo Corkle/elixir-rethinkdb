@@ -18,12 +18,7 @@
   </li>
 
   <li>
-    <strong>Password:</strong>
-    <%= @user.password %>
-  </li>
-
-  <li>
-    <strong>Password:</strong>
+    <strong>Encrypted Password:</strong>
     <%= @user.encrypted_password %>
   </li>
 

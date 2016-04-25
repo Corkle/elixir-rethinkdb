@@ -4,7 +4,14 @@ defmodule RethinkExample.RegistrationController do
   alias RethinkDatabase, as: DB
   alias RethinkExample.User
   
+  
   plug :scrub_params, "user" when action in [:create]
+  plug :action
+  
+  def new(conn, _params) do
+    changeset = User.changeset(%User{})
+    render conn, changeset: changeset
+  end
   
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
@@ -14,13 +21,17 @@ defmodule RethinkExample.RegistrationController do
         {:ok, jwt, _full_claims} = Guardian.encode_and_sign(user, :token)
         
         conn
+        #|> put_flash(:info, "Successfully registered and logged in")
+        #|> put_session(:current_user, changeset)
+        #|> redirect(to: page_path(conn, :index))
         |> put_status(:created)
         |> render(RethinkExample.SessionView, "show.json", jsw: jwt, user: user)
         
       {:error, changeset} ->
         conn
+        #|> render "new.html", changeset: changeset
         |> put_status(:unprocessable_entity)
-        |> render(RethinkDatabase.RegistrationView, "error.json", changeset: changeset)
+        |> render(RethinkExample.RegistrationView, "error.json", changeset: changeset)
     end
   end
 end
