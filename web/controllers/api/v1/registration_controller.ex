@@ -18,14 +18,14 @@ defmodule RethinkExample.RegistrationController do
     
     case DB.insert(changeset) do
       {:ok, user} ->
-        {:ok, jwt, _full_claims} = Guardian.encode_and_sign(user, :token)
+        {:ok, jwt, _full_claims} = user |> Guardian.encode_and_sign(:token)
         
         conn
         #|> put_flash(:info, "Successfully registered and logged in")
         #|> put_session(:current_user, changeset)
         #|> redirect(to: page_path(conn, :index))
         |> put_status(:created)
-        |> render(RethinkExample.SessionView, "show.json", jsw: jwt, user: user)
+        |> render(RethinkExample.SessionView, "show.json", jwt: jwt, user: user)
         
       {:error, changeset} ->
         conn
