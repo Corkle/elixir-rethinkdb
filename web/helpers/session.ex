@@ -1,6 +1,12 @@
 defmodule RethinkExample.Session do
+  use RethinkExample.Web, :model
+
   alias RethinkExample.User
   alias RethinkDatabase, as: DB
+  
+  def changeset(model, params \\ :empty) do
+    model
+  end
   
   def authenticate(%{"email" => email, "password" => password}) do
     user = DB.get_by(User, email: String.downcase(email))

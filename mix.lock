@@ -20,5 +20,5 @@
   "postgrex": {:hex, :postgrex, "0.11.1"},
   "ranch": {:hex, :ranch, "1.2.1"},
   "rethinkdb": {:hex, :rethinkdb, "0.3.2"},
-  "rethinkdb_ecto": {:git, "https://github.com/hamiltop/rethinkdb_ecto.git", "55cd697821ba17b4e5c41e8f236a1e9017eaae14", []},
+  "rethinkdb_ecto": {:git, "https://github.com/almightycouch/rethinkdb_ecto.git", "55cd697821ba17b4e5c41e8f236a1e9017eaae14", []},
   "uuid": {:hex, :uuid, "1.1.3"}}

@@ -19,11 +19,12 @@ defmodule RethinkExample.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/users", UserController
+    resources "/users", UserController, except: [:new, :create]
     resources "/posts", PostController
     
     get "/registration", RegistrationController, :new
     post "/registration", RegistrationController, :create
+    get "/login", SessionController, :new
   end
 
   # Other scopes may use custom stacks.
@@ -34,6 +35,7 @@ defmodule RethinkExample.Router do
       post "/registrations", RegistrationController, :create
       post "/sessions", SessionController, :create
       delete "/sessions", SessionController, :delete
+      get "/current_user", CurrentUserController, :show
     end
   end
 end
